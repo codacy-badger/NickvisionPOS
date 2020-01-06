@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.nickvision.pos'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'DiscordTuxBot',
+                'Implementation-Version': version,
+                'Main-Class': 'org.nickvision.pos.POS'
+    }
+    baseName = project.name
+    from {
+        configurations
+                .compile
+                .findAll { !it.name.endsWith('pom') }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
