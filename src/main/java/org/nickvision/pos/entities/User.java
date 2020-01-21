@@ -2,7 +2,8 @@ package org.nickvision.pos.entities;
 
 public class User
 {
-    private String firstName, lastName;
+    private String firstName;
+    private String lastName;
     private int loginID;
     private UserType userType;
 

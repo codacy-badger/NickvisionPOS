@@ -2,8 +2,10 @@ package org.nickvision.pos.entities;
 
 public class Customer
 {
-    private String firstName, lastName, email;
+    private String firstName;
+    private String lastName;
     private long phoneNumber;
+    private String email;
 
     public Customer(String firstName, String lastName, long phoneNumber, String email)
     {

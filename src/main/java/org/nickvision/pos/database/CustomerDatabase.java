@@ -5,7 +5,7 @@ import java.nio.file.*;
 import java.util.Properties;
 import java.util.ArrayList;
 import java.util.stream.Stream;
-import org.nickvision.pos.entities.Customer;;
+import org.nickvision.pos.entities.Customer;
 
 public class CustomerDatabase
 {

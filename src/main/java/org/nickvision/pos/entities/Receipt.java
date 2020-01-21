@@ -13,7 +13,6 @@ public class Receipt
     private ArrayList<String> receipt;
     private DecimalFormat money;
 
-
     public Receipt(Customer customer)
     {
         this.customer = customer;
@@ -67,8 +66,8 @@ public class Receipt
     {
         double change = amountGiven - getTotal();
         change = Double.parseDouble(money.format(change));
-        receipt.add("Amount Given: " + amountGiven);
-        receipt.add("Change: " + change);
+        receipt.add("Amount Given: $" + amountGiven);
+        receipt.add("Change: $" + change);
         return change;
     }
 

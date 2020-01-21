@@ -1,10 +1,9 @@
 package org.nickvision.pos.views;
 
-import org.nickvision.pos.Utils;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.database.CustomerDatabase;
 import org.nickvision.pos.entities.Customer;
 import org.nickvision.pos.entities.Pair;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class CustomerView
@@ -46,7 +45,7 @@ public class CustomerView
     public void newCustomer()
     {
         Customer newCustomer = new Customer();
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("New Customer");
         System.out.println("===============");
         System.out.print("\nFirst Name: ");
@@ -98,7 +97,7 @@ public class CustomerView
     {
         boolean validCustomer;
         Customer editCustomer;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Edit Customer");
         System.out.println("================");
         Pair pair = getCustomer();
@@ -107,7 +106,7 @@ public class CustomerView
         if(!validCustomer)
         {
             System.out.println("Invalid Customer. Please check the Phone Number.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nCurrent Customer Info:");
@@ -133,7 +132,7 @@ public class CustomerView
     {
         boolean validCustomer;
         Customer viewCustomer;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("View Customer");
         System.out.println("================");
         Pair pair = getCustomer();
@@ -142,7 +141,7 @@ public class CustomerView
         if(!validCustomer)
         {
             System.out.println("Invalid Customer. Please check the Phone Number.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nCustomer Info:");
@@ -150,14 +149,14 @@ public class CustomerView
         System.out.println("Last Name: " + viewCustomer.getLastName());
         System.out.println("Phone Number: " + viewCustomer.getPhoneNumber());
         System.out.println("Email: " + viewCustomer.getEmail());
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 
     public void deleteCustomer()
     {
         boolean validCustomer;
         Customer deleteCustomer;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Delete Customer");
         System.out.println("==================");
         Pair pair = getCustomer();
@@ -166,7 +165,7 @@ public class CustomerView
         if(!validCustomer)
         {
             System.out.println("Invalid Customer. Please check the Phone Number.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nCustomer: " + deleteCustomer.getFirstName() + " " + deleteCustomer.getLastName() + " | Phone Number: " + deleteCustomer.getPhoneNumber());
@@ -176,19 +175,19 @@ public class CustomerView
         {
             CustomerDatabase.deleteCustomer(deleteCustomer);
             System.out.println("\nCustomer deleted.");
-            Utils.enterToContinue();
+            ConsoleUtils.enterToContinue();
         }
     }
 
     public void listCustomers()
     {
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("List of All Customers");
         System.out.println("========================");
         for(Customer customer : CustomerDatabase.getAllCustomers())
         {
             System.out.println("\nName: " + customer.getFirstName() + " " + customer.getLastName() + " | Phone Number: " + customer.getPhoneNumber() + " | Email: " + customer.getEmail());
         }
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 }

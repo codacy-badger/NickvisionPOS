@@ -1,7 +1,7 @@
 package org.nickvision.pos.views;
 
 import java.util.Scanner;
-import org.nickvision.pos.Utils;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.entities.User;
 
 public class AdminView
@@ -19,7 +19,7 @@ public class AdminView
         while(!adminLogout)
         {
             int choice = 0;
-            Utils.clear();
+            ConsoleUtils.clear();
             System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
             System.out.println("===========================");
             System.out.println("\n1. Sales Screen");
@@ -48,7 +48,7 @@ public class AdminView
             catch(Exception e)
             {
                 System.out.println("Invalid choice. Please make sure it is a number.");
-                Utils.sleep(800);
+                ConsoleUtils.sleep(800);
                 continue;
             }
             switch(choice)
@@ -110,7 +110,7 @@ public class AdminView
                     break;
                 default:
                     System.out.println("Invalid choice. Please make sure it is between 1-18.");
-                    Utils.sleep(800);
+                    ConsoleUtils.sleep(800);
                     break;
             }
         }

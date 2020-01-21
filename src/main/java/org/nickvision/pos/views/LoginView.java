@@ -1,11 +1,10 @@
 package org.nickvision.pos.views;
 
-import org.nickvision.pos.Utils;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.database.UserDatabase;
 import org.nickvision.pos.entities.User;
 import org.nickvision.pos.entities.UserType;
 import java.util.Scanner;
-import java.io.IOException;
 
 public class LoginView
 {
@@ -28,7 +27,7 @@ public class LoginView
             int loginID = 0;
             boolean validLogin = false;
             if(!adminExists()) new UserView().newUser(true);
-            Utils.clear();
+            ConsoleUtils.clear();
             System.out.println("Nickvision POS Login");
             System.out.println("=======================");
             System.out.print("\nLogin ID: ");
@@ -39,7 +38,7 @@ public class LoginView
             catch (Exception e)
             {
                 System.out.println("Invalid Login ID. Please make sure it is a number.");
-                Utils.sleep(800);
+                ConsoleUtils.sleep(800);
                 continue;
             }
             for(User user : UserDatabase.getAllUsers())
@@ -58,7 +57,7 @@ public class LoginView
             else
             {
                 System.out.println("Invalid Login ID. Please try again.");
-                Utils.sleep(800);
+                ConsoleUtils.sleep(800);
             }
         }
     }

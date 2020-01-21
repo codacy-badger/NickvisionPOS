@@ -2,8 +2,7 @@ package org.nickvision.pos.views;
 
 import java.io.IOException;
 import java.util.Scanner;
-import org.nickvision.pos.Utils;
-import org.nickvision.pos.database.ItemDatabase;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.entities.Pair;
 import org.nickvision.pos.entities.Receipt;
 import org.nickvision.pos.entities.Customer;
@@ -29,7 +28,7 @@ public class NewSalesView
         if(!validCustomer)
         {
             System.out.println("Invalid Customer. Please check the Phone Number.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
         }
         else
         {
@@ -44,7 +43,7 @@ public class NewSalesView
         while(!finishedSale)
         {
             int choice = 0;
-            Utils.clear();
+            ConsoleUtils.clear();
             System.out.println("New Sale");
             System.out.println("===========");
             System.out.println("[1] Cancel Sale | [2] Add Item | [3] Delete Item | [4] Remove All Items | [5] Checkout\n");
@@ -75,7 +74,7 @@ public class NewSalesView
                     if(!validItem)
                     {
                         System.out.println("Invalid Item. Please check the Item Code.");
-                        Utils.sleep(800);
+                        ConsoleUtils.sleep(800);
                         break;
                     }
                     receipt.addItem(item);
@@ -89,7 +88,7 @@ public class NewSalesView
                     if(!validItem2)
                     {
                         System.out.println("Invalid Item. Please check the Item Code.");
-                        Utils.sleep(800);
+                        ConsoleUtils.sleep(800);
                         break;
                     }
                     receipt.removeItem(item2);
@@ -107,18 +106,18 @@ public class NewSalesView
                     catch (Exception e)
                     {
                         System.out.println("Invalid Amount. Please make sure it is a number.");
-                        Utils.sleep(800);
+                        ConsoleUtils.sleep(800);
                         break;
                     }
                     if(amountGiven < receipt.getTotal())
                     {
                         System.out.println("Invalid Amount. Please make sure it is greater than or equal to the total.");
-                        Utils.sleep(800);
+                        ConsoleUtils.sleep(800);
                         break;
                     }
                     double change = receipt.checkout(amountGiven);
                     System.out.println("Change To Give: $" + change);
-                    Utils.enterToContinue();
+                    ConsoleUtils.enterToContinue();
                     try
                     {
                         receipt.saveReceipt();

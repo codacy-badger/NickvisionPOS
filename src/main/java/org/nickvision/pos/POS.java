@@ -1,16 +1,13 @@
 package org.nickvision.pos;
 
 import java.io.*;
-import java.util.ArrayList;
-
-import org.nickvision.pos.entities.User;
 import org.nickvision.pos.views.LoginView;
 
 public class POS
 {
     public POS()
     {
-        Utils.clear();
+        ConsoleUtils.clear();
     }
 
     public static void main(String[] args)
@@ -26,7 +23,7 @@ public class POS
         for(int i = 0; i < 12; i++)
         {
             System.out.print("=");
-            Utils.sleep(100);
+            ConsoleUtils.sleep(100);
         }
         new File("POS").mkdirs();
         new File("POS/Users").mkdirs();
@@ -36,7 +33,7 @@ public class POS
         for(int i = 0; i < 12; i++)
         {
             System.out.print("=");
-            Utils.sleep(100);
+            ConsoleUtils.sleep(100);
         }
         System.out.print("]\n");
         new LoginView().show();

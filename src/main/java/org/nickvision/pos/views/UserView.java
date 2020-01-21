@@ -1,11 +1,10 @@
 package org.nickvision.pos.views;
 
-import org.nickvision.pos.Utils;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.database.UserDatabase;
 import org.nickvision.pos.entities.User;
 import org.nickvision.pos.entities.UserType;
 import org.nickvision.pos.entities.Pair;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class UserView
@@ -47,7 +46,7 @@ public class UserView
     public void newUser(boolean mustBeAdmin)
     {
         User newUser = new User();
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("New User");
         System.out.println("===========");
         System.out.print("\nFirst Name: ");
@@ -125,7 +124,7 @@ public class UserView
     {
         boolean validUser;
         User editUser;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Edit User");
         System.out.println("============");
         Pair pair = getUser();
@@ -134,7 +133,7 @@ public class UserView
         if(!validUser)
         {
             System.out.println("Invalid User. Please check the Login ID.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nCurrent User Info:");
@@ -178,7 +177,7 @@ public class UserView
     {
         boolean validUser;
         User viewUser;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("View User");
         System.out.println("============");
         Pair pair = getUser();
@@ -187,7 +186,7 @@ public class UserView
         if(!validUser)
         {
             System.out.println("Invalid User. Please check the Login ID.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nUser Info:");
@@ -195,14 +194,14 @@ public class UserView
         System.out.println("Last Name: " + viewUser.getLastName());
         System.out.println("Login ID: " + viewUser.getLoginID());
         System.out.println("User Type: " + viewUser.getUserType().name());
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 
     public void deleteUser()
     {
         boolean validUser;
         User deleteUser;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Delete User");
         System.out.println("==============");
         Pair pair = getUser();
@@ -211,7 +210,7 @@ public class UserView
         if(!validUser)
         {
             System.out.println("Invalid User. Please check the Login ID.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nUser: " + deleteUser.getFirstName() + " " + deleteUser.getLastName() + " | Login ID: " + deleteUser.getLoginID());
@@ -221,19 +220,19 @@ public class UserView
         {
             UserDatabase.deleteUser(deleteUser);
             System.out.println("\nUser deleted.");
-            Utils.enterToContinue();
+            ConsoleUtils.enterToContinue();
         }
     }
 
     public void listUsers()
     {
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("List of All Users");
         System.out.println("====================");
         for(User user : UserDatabase.getAllUsers())
         {
             System.out.println("\nName: " + user.getFirstName() + " " + user.getLastName() + " | Login ID: " + user.getLoginID() + " | User Type: " + user.getUserType().name());
         }
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 }

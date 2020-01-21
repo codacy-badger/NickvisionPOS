@@ -1,10 +1,9 @@
 package org.nickvision.pos.views;
 
-import org.nickvision.pos.Utils;
+import org.nickvision.pos.ConsoleUtils;
 import org.nickvision.pos.database.ItemDatabase;
 import org.nickvision.pos.entities.Item;
 import org.nickvision.pos.entities.Pair;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ItemView
@@ -46,7 +45,7 @@ public class ItemView
     public void newItem()
     {
         Item newItem = new Item();
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("New Item");
         System.out.println("===========");
         System.out.print("\nName: ");
@@ -111,7 +110,7 @@ public class ItemView
     {
         boolean validItem;
         Item editItem;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Edit Item");
         System.out.println("============");
         Pair pair = getItem();
@@ -120,7 +119,7 @@ public class ItemView
         if(!validItem)
         {
             System.out.println("Invalid Item. Please check the Item Code.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nCurrent Item Info:");
@@ -159,7 +158,7 @@ public class ItemView
     {
         boolean validItem;
         Item viewItem;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("View Item");
         System.out.println("============");
         Pair pair = getItem();
@@ -168,7 +167,7 @@ public class ItemView
         if(!validItem)
         {
             System.out.println("Invalid Item. Please check the Item Code.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nItem Info:");
@@ -176,14 +175,14 @@ public class ItemView
         System.out.println("Description: " + viewItem.getDescription());
         System.out.println("Item Code: " + viewItem.getItemCode());
         System.out.println("Price: $" + viewItem.getPrice());
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 
     public void deleteItem()
     {
         boolean validItem;
         Item deleteItem;
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("Delete Item");
         System.out.println("==============");
         Pair pair = getItem();
@@ -192,7 +191,7 @@ public class ItemView
         if(!validItem)
         {
             System.out.println("Invalid Item. Please check the Item Code.");
-            Utils.sleep(800);
+            ConsoleUtils.sleep(800);
             return;
         }
         System.out.println("\nItem: " + deleteItem.getName() + " | Item Code: " + deleteItem.getItemCode());
@@ -202,19 +201,19 @@ public class ItemView
         {
             ItemDatabase.deleteItem(deleteItem);
             System.out.println("\nItem deleted.");
-            Utils.enterToContinue();
+            ConsoleUtils.enterToContinue();
         }
     }
 
     public void listItems()
     {
-        Utils.clear();
+        ConsoleUtils.clear();
         System.out.println("List of All Items");
         System.out.println("====================");
         for(Item item : ItemDatabase.getAllItems())
         {
             System.out.println("\nName: " + item.getName() + " | Description: " + item.getDescription() + " | Item Code: " + item.getItemCode() + " | Price: $" + item.getPrice());
         }
-        Utils.enterToContinue();
+        ConsoleUtils.enterToContinue();
     }
 }

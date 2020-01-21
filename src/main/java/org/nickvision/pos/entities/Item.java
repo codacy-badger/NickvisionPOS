@@ -2,7 +2,8 @@ package org.nickvision.pos.entities;
 
 public class Item
 {
-    private String name, description;
+    private String name;
+    private String description;
     private int itemCode;
     private double price;
 
